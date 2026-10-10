@@ -1,5 +1,5 @@
-import MicroCdnClient from "./libs/micro-cdn-client.mjs";
+import MicroQueueClient from "./libs/micro-queue-client.mjs";
 
 
-export default MicroCdnClient;
+export default MicroQueueClient;
 
