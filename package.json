@@ -1,7 +1,7 @@
 {
-	"name": "@potentii/micro-cdn-client",
-	"version": "1.0.1",
-	"description": "Client library for micro-cdn",
+	"name": "@potentii/micro-queue-client",
+	"version": "1.0.2",
+	"description": "Client library for micro-queue",
 	"main": "main.mjs",
 	"types": "main.d.ts",
 	"type": "module",
@@ -19,24 +19,25 @@
 		}
 	},
 	"keywords": [
-		"micro-cdn",
+		"micro-queue",
 		"micro",
-		"cdn",
+		"queue",
 		"client"
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Potentii/micro-cdn-client.git"
+		"url": "git+https://github.com/Potentii/micro-queue-client.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Potentii/micro-cdn-client/issues"
+		"url": "https://github.com/Potentii/micro-queue-client/issues"
 	},
-	"homepage": "https://github.com/Potentii/micro-cdn-client#readme",
+	"homepage": "https://github.com/Potentii/micro-queue-client#readme",
 	"author": "Guilherme Reginaldo Ruella<potentii@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
 		"joi": "18.2.9",
-		"uuid": "14.0.2"
+		"@potentii/rest-envelopes": "1.4.0",
+		"uuid": "14.0.3"
 	}
 }
 
