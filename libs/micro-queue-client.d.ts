@@ -1,4 +1,4 @@
-export type EQueueDeduplicationMode = 'PAYLOAD_HASH' | 'MANUAL' | 'NONE';
+export type EQueueDeduplicationMode = 'PAYLOAD_HASH' | 'MANUAL' | 'AUTO' | 'NONE';
 
 export interface QueueUpsertConfig {
   id: string;

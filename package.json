@@ -1,6 +1,6 @@
 {
 	"name": "@potentii/micro-queue-client",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Client library for micro-queue",
 	"main": "main.mjs",
 	"types": "main.d.ts",
@@ -35,10 +35,9 @@
 	"author": "Guilherme Reginaldo Ruella<potentii@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
-		"joi": "18.0.2",
+		"joi": "18.2.9",
 		"@potentii/rest-envelopes": "1.4.0",
-		"node-fetch": "3.3.2",
-		"uuid": "13.0.0"
+		"uuid": "14.0.3"
 	}
 }
 

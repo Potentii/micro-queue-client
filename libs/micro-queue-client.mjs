@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import Joi from "joi";
 import {RequestEnvelope} from "@potentii/rest-envelopes";
 import * as uuid from "uuid";
@@ -97,7 +96,7 @@ export default class MicroQueueClient {
 
 
 	/**
-	 * @typedef {'PAYLOAD_HASH'|'MANUAL'|'NONE'} EQueueDeduplicationMode
+	 * @typedef {'PAYLOAD_HASH'|'MANUAL'|'AUTO'|'NONE'} EQueueDeduplicationMode
 	 */
 	/**
 	 * @typedef {{
