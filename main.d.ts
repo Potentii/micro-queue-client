@@ -1,6 +1,6 @@
-import MicroQueueClient, {EQueueDeduplicationMode, QueueUpsertResult, QueueUpsertConfig, MessageConsumer, MessageErrorHandler, HeadersRecord, MicroQueueClientOptions, Message} from "./libs/micro-queue-client";
+import MicroCdnClient, {EQueueDeduplicationMode, QueueUpsertResult, QueueUpsertConfig, MessageConsumer, MessageErrorHandler, HeadersRecord, MicroCdnClientOptions, Message} from "./libs/micro-cdn-client";
 
 
-export type {EQueueDeduplicationMode, QueueUpsertResult, QueueUpsertConfig, MessageConsumer, MessageErrorHandler, HeadersRecord, MicroQueueClientOptions, Message}
+export type {EQueueDeduplicationMode, QueueUpsertResult, QueueUpsertConfig, MessageConsumer, MessageErrorHandler, HeadersRecord, MicroCdnClientOptions, Message}
 
-export default MicroQueueClient
+export default MicroCdnClient
