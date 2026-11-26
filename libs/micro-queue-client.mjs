@@ -1,6 +1,7 @@
 import Joi from "joi";
 import {RequestEnvelope} from "@potentii/rest-envelopes";
 import * as uuid from "uuid";
+import fetchWithRetry from './utils/fetch-with-retry.mjs';
 
 /**
  * @typedef {Object} MicroQueueClientOptions
@@ -120,12 +121,14 @@ export default class MicroQueueClient {
 	 * @returns {Promise<QueueUpsertResult>}.
 	 */
 	async upsertQueue(queueConfig) {
-		const res = await fetch(`${this.#baseUrl}/api/v1/queues`, {
+		const res = await fetchWithRetry(`${this.#baseUrl}/api/v1/queues`, {
 			method: 'PUT',
 			headers: {
 				...this.#headers,
 			},
 			body: JSON.stringify(RequestEnvelope.builder().data(queueConfig).build()),
+		}, {
+			maxAttempts: 10,
 		});
 
 		if (!res.ok)
@@ -144,12 +147,14 @@ export default class MicroQueueClient {
 	 * @returns {Promise<{ id: string }>}
 	 */
 	async postMessage(queueId, payload, headers) {
-		const res = await fetch(`${this.#baseUrl}/api/v1/queues/${queueId}/messages`, {
+		const res = await fetchWithRetry(`${this.#baseUrl}/api/v1/queues/${queueId}/messages`, {
 			method: 'POST',
 			headers: {
 				...this.#headers,
 			},
 			body: JSON.stringify(RequestEnvelope.builder().data({ payload: payload, headers: headers }).build()),
+		}, {
+			maxAttempts: 10,
 		});
 
 		if (!res.ok)
@@ -324,11 +329,13 @@ export default class MicroQueueClient {
 	 * @returns {Promise<void>} Resolves when ack succeeds.
 	 */
 	async #ackMessage(queueId, messageId) {
-		const res = await fetch(`${this.#baseUrl}/api/v1/queues/${queueId}/messages/${messageId}`, {
+		const res = await fetchWithRetry(`${this.#baseUrl}/api/v1/queues/${queueId}/messages/${messageId}`, {
 			method: 'DELETE',
 			headers: {
 				...this.#headers,
 			},
+		}, {
+			maxAttempts: 10,
 		});
 
 		if (!res.ok)

@@ -1,33 +1,38 @@
 name: Publish CI
 
 on:
-  release:
-    types: [ published ]
+   release:
+      types: [ published ]
 
 permissions:
    id-token: write  # Required for OIDC
    contents: write
 
 jobs:
-  build:
+   build:
 
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+      steps:
+         -  uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
+         -  name: Setup Node.js
+            uses: actions/setup-node@v7
+            with:
+               node-version: '24'
 
-      - run: npm install -g npm@latest # Required for OIDC
+         -  name: Update NPM
+            run: npm install -g npm@latest # Required for OIDC
 
-      - run: npm ci
+         -  name: Install dependencies
+            run: npm ci
 
-      - run: npm run build --if-present
+         -  name: Build project
+            run: npm run build --if-present
 
-      - run: npm run test:ci --if-present
+         -  name: Test project
+            run: npm run test:ci --if-present
 
-      - run: npm publish --access public
+         -  name: Publish package
+            run: npm publish --provenance
 
